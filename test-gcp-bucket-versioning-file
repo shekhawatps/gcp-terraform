@@ -1,0 +1,37 @@
+# Create a simple text file and copy it over to our GCS bucket
+$ echo "Hello" > hello.txt
+$ gsutil cp hello.txt gs://myexample-state-bucket
+Copying file://hello.txt [Content-Type=text/plain]...
+/ [1 files][    6.0 B/    6.0 B]                                                
+Operation completed over 1 objects/6.0 B. 
+
+
+
+# List our hello.txt file and the version
+$ gsutil ls -al gs://myexample-state-bucket/
+         6  2019-12-19T04:34:24Z  gs://myexample-state-bucket/hello.txt#1576730064936945  metageneration=1
+TOTAL: 1 objects, 6 bytes (6 B)
+
+
+# Create a new hello.txt and replace the old copy
+$ echo "Hello Github" > hello.txt
+$ gsutil cp hello.txt gs://myexample-state-bucket
+Copying file://hello.txt [Content-Type=text/plain]...
+/ [1 files][   13.0 B/   13.0 B]                                                
+Operation completed over 1 objects/13.0 B. 
+
+
+$ gsutil ls -al gs://myexample-state-bucket/
+         6  2019-12-19T04:34:24Z  gs://myexample-state-bucket/hello.txt#1576730064936945  metageneration=1
+        13  2019-12-19T04:35:11Z  gs://myexample-state-bucket/hello.txt#1576730111249489  metageneration=1
+TOTAL: 2 objects, 19 bytes (19 B)
+
+
+# View the old version of hello.txt
+$ gsutil cat gs://myexample-state-bucket/hello.txt#1576730064936945
+Hello
+
+
+# View the current version of hello.txt
+$ gsutil cat gs://myexample-state-bucket/hello.txt
+Hello Github
