@@ -1,0 +1,11 @@
+To get the current versioninig status:
+$ gsutil versioning get gs://myexample-state-bucket
+gs://myexample-state-bucket: Suspended
+
+Set versioning for bucket:
+$ gsutil versioning set on gs://myexample-state-bucket
+Enabling versioning for gs://myexample-state-bucket/...
+
+To get the current versioninig status:
+$ gsutil versioning get gs://myexample-state-bucket
+gs://myexample-state-bucket: Enabled
