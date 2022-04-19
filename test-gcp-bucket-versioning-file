@@ -21,6 +21,7 @@ Copying file://hello.txt [Content-Type=text/plain]...
 Operation completed over 1 objects/13.0 B. 
 
 
+
 $ gsutil ls -al gs://myexample-state-bucket/
          6  2019-12-19T04:34:24Z  gs://myexample-state-bucket/hello.txt#1576730064936945  metageneration=1
         13  2019-12-19T04:35:11Z  gs://myexample-state-bucket/hello.txt#1576730111249489  metageneration=1
