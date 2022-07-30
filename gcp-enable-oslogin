@@ -1,0 +1,21 @@
+# List the IDs of all the Google Cloud Platform (GCP) projects available in your Google Cloud account: 
+$gcloud projects list --format="table(projectId)"
+
+
+#Run compute project-info describe command using the ID of the GCP project that you want to examine 
+gcloud compute project-info describe  --project <your_gcp_project_ID>  --format="json(commonInstanceMetadata.items)"
+
+
+# Configure oslogin on the project using the following command
+$ gcloud compute project-info add-metadata --metadata enable-oslogin=TRUE
+
+
+#Enable oslogin for a specificInstance 
+$gcloud compute instances add-metadata VM_NAME --metadata enable-oslogin=TRUE
+
+#Set enable-oslogin in instance metadata when you create an instance.
+$gcloud compute instances create INSTANCE_NAME --zone=ZONE --metadata=enable-oslogin=TRUE
+
+
+#Remove instance metadata that overrides the project setting, using the following command:
+$gcloud compute instances remove-metadata INSTANCE_NAME --keys=enable-oslogin
