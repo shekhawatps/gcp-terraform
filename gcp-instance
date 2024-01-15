@@ -1,0 +1,7 @@
+To lis the compute instances
+
+gcloud compute instances list
+
+
+
+
